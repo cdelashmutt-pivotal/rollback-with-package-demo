@@ -4,7 +4,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: git-http
+  name: git-token
   annotations:
     tekton.dev/git-0: #@ data.values.imported.git.url
 type: kubernetes.io/basic-auth
