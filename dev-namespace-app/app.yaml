@@ -1,0 +1,23 @@
+---
+apiVersion: kappctrl.k14s.io/v1alpha1
+kind: App
+metadata:
+  name: hello-app-app
+  namespace: my-apps
+spec:
+  serviceAccountName: default
+  fetch:
+  - git:
+      url: https://github.com/cdelashmutt-pivotal/rollback-with-package-demo-gitops
+      ref: origin/main
+      subPath: tanzu-java-web-app.my-apps.vmware.com/packages
+  - git:
+      url: https://github.com/cdelashmutt-pivotal/rollback-with-package-demo-gitops
+      ref: origin/main
+      subPath: tanzu-java-web-app.my-apps.vmware.com/dev
+  template:
+  - ytt: {}
+  deploy:
+  - kapp:
+      intoNs: my-apps
+      rawOptions: ["--dangerous-allow-empty-list-of-resources=true"]
