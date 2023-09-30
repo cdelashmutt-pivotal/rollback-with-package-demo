@@ -2,7 +2,7 @@
 apiVersion: kappctrl.k14s.io/v1alpha1
 kind: App
 metadata:
-  name: hello-app-app
+  name: rollback-sample-app
   namespace: my-apps
 spec:
   serviceAccountName: default
@@ -10,11 +10,11 @@ spec:
   - git:
       url: https://github.com/cdelashmutt-pivotal/rollback-with-package-demo-gitops
       ref: origin/main
-      subPath: tanzu-java-web-app.my-apps.vmware.com/packages
+      subPath: rollback-sample.my-apps.vmware.com/packages
   - git:
       url: https://github.com/cdelashmutt-pivotal/rollback-with-package-demo-gitops
       ref: origin/main
-      subPath: tanzu-java-web-app.my-apps.vmware.com/dev
+      subPath: rollback-sample.my-apps.vmware.com/dev
   template:
   - ytt: {}
   deploy:
